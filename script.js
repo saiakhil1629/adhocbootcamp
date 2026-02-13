@@ -188,12 +188,11 @@ document.getElementById("teamForm").addEventListener("submit", async (e) => {
   submitBtn.disabled = true;
   setStatus("Submitting... Please wait.", "info");
 
-  try {
-    const res = await fetch(APPS_SCRIPT_URL, {
-      method: "POST",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload)
-    });
+  const res = await fetch(APPS_SCRIPT_URL, {
+  method: "POST",
+  body: JSON.stringify(payload)
+});
+
 
     const data = await res.json().catch(() => ({}));
     if (data.ok) {
@@ -217,6 +216,7 @@ window.addEventListener("load", () => {
   const MIN_LOADING_TIME = 5000;
   setTimeout(() => preloader.classList.add("hide"), MIN_LOADING_TIME);
 });
+
 
 
 
